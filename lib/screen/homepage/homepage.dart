@@ -7,6 +7,8 @@ import 'homepage_navbar.dart';
 import 'homepage_slider.dart';
 import 'homepage_titleText.dart';
 
+import 'package:audioplayers/audioplayers.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,6 +17,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final audioPlayer = AudioPlayer();
+  bool isPlaying = false;
+  Duration duration = Duration.zero;
+  Duration position = Duration.zero;
+
+  void initState() {
+    super.initState();
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      setState(() {
+        isPlaying = state == PlayerState.playing;
+      });
+    });
+
+    audioPlayer.onDurationChanged.listen((newDuration) {
+      setState(() {
+        duration = newDuration;
+      });
+    });
+
+    audioPlayer.onPositionChanged.listen((newPosition) {
+      setState(() {
+        position = newPosition;
+      });
+    });
+  }
+
+  Future setAudio() async {
+    audioPlayer.setReleaseMode(ReleaseMode.loop);
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+
+    super.dispose();
+  }
+
+  void seekToSec(int sec) {
+    Duration position = Duration(seconds: sec.toInt());
+    audioPlayer.seek(position);
+    print(position);
+  }
+
+  double _currentSliderValue = 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,14 +90,34 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            MusicSlider(),
+            MusicSlider(
+              duration: duration,
+              position: position,
+              audioPlayer: audioPlayer,
+            ),
             SizedBox(
               height: 10,
             ),
-            BottomBar(),
+            BottomBar(isPlaying: isPlaying, audioPlayer: audioPlayer),
           ],
         ),
       ),
     );
   }
+}
+
+String formatTime(Duration duration) {
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+  final hours = twoDigits(duration.inHours);
+
+  final minutes = twoDigits(duration.inMinutes.remainder(60));
+
+  final seconds = twoDigits(duration.inSeconds.remainder(60));
+
+  return [
+    if (duration.inHours > 0) hours,
+    minutes,
+    seconds,
+  ].join(":");
 }

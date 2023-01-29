@@ -1,8 +1,18 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-class BottomBar extends StatelessWidget {
-  const BottomBar({super.key});
+import '../../constanta/colors.dart';
 
+class BottomBar extends StatefulWidget {
+  bool? isPlaying;
+  AudioPlayer? audioPlayer;
+  BottomBar({super.key, required this.isPlaying, required this.audioPlayer});
+
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -34,11 +44,19 @@ class BottomBar extends StatelessWidget {
             ),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              if (widget.isPlaying!) {
+                await widget.audioPlayer!.pause();
+              } else {
+                await widget.audioPlayer!.play(
+                  AssetSource("music/in_the_end.mp3"),
+                );
+              }
+            },
             icon: Icon(
-              Icons.play_arrow_outlined,
+              widget.isPlaying! ? Icons.pause : Icons.play_arrow,
               size: 35,
-              color: Color.fromARGB(255, 77, 177, 191),
+              color: play,
             ),
           ),
         ),
