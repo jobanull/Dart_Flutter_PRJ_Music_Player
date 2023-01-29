@@ -20,20 +20,26 @@ class PlayListNavbar extends StatelessWidget {
           ),
         ),
         SizedBox(width: 50),
-        Text(
-          "My Playlist",
-          style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+        Container(
+          margin: EdgeInsets.only(top: 15),
+          child: Text(
+            "My Playlist",
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
         ),
         SizedBox(width: 50),
-        IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.search,
-            color: colorItem,
-            size: 25,
+        Container(
+          margin: EdgeInsets.only(top: 15),
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.search,
+              color: colorItem,
+              size: 25,
+            ),
           ),
         ),
       ],
