@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'screen/homepage.dart';
+import 'screen/homepage/homepage.dart';
+import 'screen/playlist/playlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
+        '/playlist': (context) => PlayList(),
       },
     );
   }
