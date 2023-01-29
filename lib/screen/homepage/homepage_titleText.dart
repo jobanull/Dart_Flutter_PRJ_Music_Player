@@ -12,10 +12,15 @@ class TitleText extends StatelessWidget {
         Text(
           "Linkin Park",
           style: TextStyle(
-              fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
+            fontSize: 30,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Cardo",
+            letterSpacing: 2,
+          ),
         ),
         Text(
-          "end the end",
+          "in the end",
           style: TextStyle(
             fontSize: 20,
             color: colorItem,
