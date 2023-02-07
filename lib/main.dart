@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'fortest.dart';
 import 'screen/homepage/homepage.dart';
 import 'screen/playlist/playlist.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
+        // '/': (context) => ForTest(),
         '/': (context) => HomePage(),
         '/playlist': (context) => PlayList(),
       },

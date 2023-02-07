@@ -5,13 +5,14 @@ class BoxImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double lengthWith = MediaQuery.of(context).size.width;
+    double lengthHeight = MediaQuery.of(context).size.height;
     return Container(
-      width: 240,
-      height: 250,
+      width: lengthWith * 0.5,
+      height: lengthHeight * 0.3,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(
-              "https://arrestedmotion.com/wp-content/uploads/2014/05/616515_10152066692091824_6213012444805050146_o.jpg"),
+          image: AssetImage("assets/image_music/music_01.jpg"),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(40),

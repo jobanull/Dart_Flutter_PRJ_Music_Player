@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/screen/homepage/homepage.dart';
 
 import '../../constanta/colors.dart';
 import '../../model/model.dart';
@@ -14,7 +15,13 @@ class PlaylistContent extends StatelessWidget {
         final musik = listofMusic[index];
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/');
+            // Navigator.pushReplacement(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => HomePage(),
+            //     ));
+
+            Navigator.pop(context);
           },
           child: Container(
             margin: EdgeInsets.only(bottom: 30),
@@ -35,7 +42,7 @@ class PlaylistContent extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(musik.image!),
+                        image: AssetImage(musik.image!),
                         fit: BoxFit.cover,
                       ),
                       borderRadius: BorderRadius.circular(30),

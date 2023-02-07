@@ -60,15 +60,24 @@ class _HomePageState extends State<HomePage> {
     print(position);
   }
 
+  @override
+  void didChangeDependencies() {
+    print(MediaQuery.of(context));
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
   double _currentSliderValue = 20;
 
   @override
   Widget build(BuildContext context) {
+    double lengthWith = MediaQuery.of(context).size.width;
+    double lengthHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(15),
-        width: double.infinity,
-        height: double.infinity,
+        width: lengthWith,
+        height: lengthHeight,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [baseColor, Colors.black],

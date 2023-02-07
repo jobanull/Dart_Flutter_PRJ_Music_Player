@@ -15,6 +15,8 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
+    double lengthWith = MediaQuery.of(context).size.width;
+    double lengthHeight = MediaQuery.of(context).size.height;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -33,8 +35,8 @@ class _BottomBarState extends State<BottomBar> {
           ),
         ),
         Container(
-          width: 50,
-          height: 50,
+          width: lengthWith * 0.11,
+          height: lengthHeight * 0.07,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             gradient: LinearGradient(
