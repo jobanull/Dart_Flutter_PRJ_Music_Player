@@ -35,8 +35,8 @@ class _BottomBarState extends State<BottomBar> {
           ),
         ),
         Container(
-          width: lengthWith * 0.11,
-          height: lengthHeight * 0.07,
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             gradient: LinearGradient(

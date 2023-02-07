@@ -53,13 +53,13 @@ List<Music> listofMusic = [
   Music(
       name: "One Direction",
       title: "Night Changes",
-      image: "assets/image_music/music_07.jpg",
+      image: "assets/image_music/music_07.png",
       duration: "04:25",
       musicLink: "music/night_changes.mp3"),
   Music(
       name: "One Direction",
       title: "Steal My Girl",
-      image: "assets/image_music/music_07.jpg",
+      image: "assets/image_music/music_07.png",
       duration: "03:35",
       musicLink: "music/steal_my_girl.mp3"),
   Music(
